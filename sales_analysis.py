@@ -1,8 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-# Read dataset
+# Read the  dataset
 data = pd.read_csv("sales_data.csv")
-# Create Total column
+# Create the Total column
 data["Total"] = data["Quantity"] * data["Price"]
 print("\n================ SALES DATA ================\n")
 print(data)
@@ -16,15 +16,15 @@ product_sales = data.groupby("Product")["Total"].sum()
 print("\n----------- Sales by Product -----------")
 for product, revenue in product_sales.items():
     print(f"{product:<10} : {revenue}")
-# Best selling product
+# Best-selling product
 best_pro = product_sales.idxmax()
 print("\nBest Selling Product:", best_pro)
-# Quantity sold
+# Total Quantity sold
 quantity = data.groupby("Product")["Quantity"].sum()
 print("\n------- Total Quantity Sold -------")
 for product, qty in quantity.items():
     print(f"{product:<10} : {qty}")
-# Bar chart
+# Bar chart of product and revenue
 product_sales.plot(kind="bar")
 plt.title("Sales by Product")
 plt.xlabel("Product")
